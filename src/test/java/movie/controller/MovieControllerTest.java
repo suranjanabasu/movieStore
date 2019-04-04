@@ -39,7 +39,7 @@ public class MovieControllerTest {
 
         given(service.retrieveMovies()).willReturn(allMovies);
 
-        mvc.perform(get("/movie/list")
+        mvc.perform(get("/api/movie/list")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)));
