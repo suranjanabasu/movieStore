@@ -1,8 +1,0 @@
-/home/suranjana/project/movieStore/src/main/java/movie/entity/Movie.java
-/home/suranjana/project/movieStore/src/main/java/movie/controller/MovieController.java
-/home/suranjana/project/movieStore/src/main/java/movie/repo/MovieRepository.java
-/home/suranjana/project/movieStore/src/main/java/movie/exception/BadMovieRequestException.java
-/home/suranjana/project/movieStore/src/main/java/movie/MainApplicationClass.java
-/home/suranjana/project/movieStore/src/main/java/movie/service/MovieService.java
-/home/suranjana/project/movieStore/src/main/java/movie/service/MovieServiceImpl.java
-/home/suranjana/project/movieStore/src/main/java/movie/exception/MovieNotFoundException.java

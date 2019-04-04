@@ -1,8 +1,0 @@
-movie/entity/Movie.class
-movie/exception/BadMovieRequestException.class
-movie/controller/MovieController.class
-movie/service/MovieServiceImpl.class
-movie/MainApplicationClass.class
-movie/repo/MovieRepository.class
-movie/service/MovieService.class
-movie/exception/MovieNotFoundException.class
