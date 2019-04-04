@@ -1,0 +1,4 @@
+1. Create a separate request and response object. Do not use the Entity object. Am using this now for simplicity
+2. As per the current implementation, same movie can be inserted twice. No checks added to see if a movie is present then add
+3. Add more failure tests
+4. Facing issues with running both swagger and DataJpaTest. Need to look more into it

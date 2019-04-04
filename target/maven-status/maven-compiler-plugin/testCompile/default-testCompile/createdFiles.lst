@@ -1,0 +1,4 @@
+movie/controller/MovieControllerTest.class
+movie/repo/MovieRepositoryTest.class
+MovieControllerIntegrationTest.class
+movie/service/MovieServiceTest.class
