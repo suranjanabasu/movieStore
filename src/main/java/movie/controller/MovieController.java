@@ -15,6 +15,7 @@ import java.net.URI;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -29,14 +30,14 @@ public class MovieController {
         return "Hi from MovieController.java";
     }
 
-    @GetMapping("/movie/list")
+    @GetMapping("/api/movie/list")
     public List<Movie> getMovies() {
         logger.info("Entering getMovies");
         List<Movie> movies = movieService.retrieveMovies();
         return movies;
     }
 
-    @GetMapping("/movie/{movieId}")
+    @GetMapping("/api/movie/{movieId}")
     public Movie getMovie(@PathVariable(name="movieId")Long movieId) {
         logger.info("Entering getMovie");
         if(movieId == null) {
@@ -45,7 +46,7 @@ public class MovieController {
         return movieService.getMovie(movieId);
     }
 
-    @PostMapping("/movie")
+    @PostMapping("/api/movie")
     public ResponseEntity<Object> saveMovie(@RequestBody  Movie movie){
         logger.info("Entering saveMovie");
         if(movie == null) {
@@ -72,7 +73,7 @@ public class MovieController {
     * I would never delete any data in database but set a column called state
     * i.e mark the data as deleted without actually deleting from a system of record*/
 
-    @DeleteMapping("/movie/{movieId}")
+    @DeleteMapping("/api/movie/{movieId}")
     public void deleteMovie(@PathVariable(name="movieId")Long movieId) {
         logger.info("Entering deleteMovie");
         if(movieId == null) {
@@ -82,7 +83,7 @@ public class MovieController {
         System.out.println("Movie Deleted Successfully");
     }
 
-    @PutMapping("/movie/{movieId}")
+    @PutMapping("/api/movie/{movieId}")
     public void updateMovie(@RequestBody Movie movie,
                                @PathVariable(name="movieId")Long movieId){
         logger.info("Entering updateMovie");
@@ -105,6 +106,12 @@ public class MovieController {
         } else {
             movieService.saveMovie(movie);
         }
+
+    }
+
+    @RequestMapping("/api/timeOfDay")
+    public String timeOfDay() {
+        return new Date().toString();
 
     }
 

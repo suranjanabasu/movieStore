@@ -26,7 +26,7 @@ public class MovieControllerIntegrationTest {
         Movie movie = new Movie("Forrest Gump", "Drama", "1994", 10);
         HttpEntity<Movie> entity = new HttpEntity<>(movie, headers);
         ResponseEntity<String> response = restTemplate.exchange(
-                createURLWithPort("/movie"), HttpMethod.POST, entity, String.class);
+                createURLWithPort("/api/movie"), HttpMethod.POST, entity, String.class);
         HttpStatus statusCode = response.getStatusCode();
         assertEquals(statusCode.value(), 201);
     }
@@ -36,7 +36,7 @@ public class MovieControllerIntegrationTest {
     public void test2RetrieveMovie() throws Exception {
         HttpEntity<String> entity = new HttpEntity<String>(null, headers);
         ResponseEntity<String> response = restTemplate.exchange(
-                createURLWithPort("/movie/1"), HttpMethod.GET, entity, String.class);
+                createURLWithPort("/api//movie/1"), HttpMethod.GET, entity, String.class);
         String expected = "{\"id\":1,\"name\":\"Forrest Gump\",\"genre\":\"Drama\"}";
         JSONAssert.assertEquals(expected, response.getBody(), false);
     }
@@ -48,7 +48,7 @@ public class MovieControllerIntegrationTest {
         Movie movie = new Movie("Forrest Gump", "Drama", "tyty", 10);
         HttpEntity<Movie> entity = new HttpEntity<>(movie, headers);
         ResponseEntity<String> response = restTemplate.exchange(
-                createURLWithPort("/movie"), HttpMethod.POST, entity, String.class);
+                createURLWithPort("/api/movie"), HttpMethod.POST, entity, String.class);
         HttpStatus statusCode = response.getStatusCode();
         assertEquals(statusCode.value(), 400);
     }
