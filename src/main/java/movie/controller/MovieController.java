@@ -47,7 +47,7 @@ public class MovieController {
     }
 
     @PostMapping("/api/movie")
-    public ResponseEntity<Object> saveMovie(@RequestBody  Movie movie){
+    public Movie saveMovie(@RequestBody  Movie movie){
         logger.info("Entering saveMovie");
         if(movie == null) {
             throw new BadMovieRequestException();
@@ -62,10 +62,10 @@ public class MovieController {
         }
         Movie savedMovie  = movieService.saveMovie(movie);
         System.out.println("Movie Saved Successfully");
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(savedMovie.getId()).toUri();
+//        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+//                .buildAndExpand(savedMovie.getId()).toUri();
 
-        return ResponseEntity.created(location).build();
+        return savedMovie;
 
     }
 
@@ -84,7 +84,7 @@ public class MovieController {
     }
 
     @PutMapping("/api/movie/{movieId}")
-    public void updateMovie(@RequestBody Movie movie,
+    public Movie updateMovie(@RequestBody Movie movie,
                                @PathVariable(name="movieId")Long movieId){
         logger.info("Entering updateMovie");
         if(movie == null || movieId == null) {
@@ -101,11 +101,13 @@ public class MovieController {
         }
 
         Movie retrievedMovie = movieService.getMovie(movieId);
+        Movie updatedMovie;
         if(retrievedMovie != null){
-            movieService.updateMovie(movie);
+            updatedMovie = movieService.updateMovie(movie);
         } else {
-            movieService.saveMovie(movie);
+            updatedMovie = movieService.saveMovie(movie);
         }
+        return updatedMovie;
 
     }
 
